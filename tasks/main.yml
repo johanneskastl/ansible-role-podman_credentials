@@ -7,11 +7,11 @@
     state: 'directory'
     mode: '0700'
   loop:
-    - '.config/'
-    - '.config/containers/'
+    - '~/.config/'
+    - '~/.config/containers/'
 
 - name: 'Create the auth.json file'
   ansible.builtin.template:
     src: 'auth.json.j2'
-    dest: '.config/containers/auth.json'
+    dest: '~/.config/containers/auth.json'
     mode: '0600'
