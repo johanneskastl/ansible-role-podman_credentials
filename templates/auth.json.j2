@@ -1,7 +1,13 @@
 {
     "auths": {
-        "{{ podman_credentials_registry_url }}": {
-            "auth": "{{ (podman_credentials_registry_username + ':' + podman_credentials_registry_password_or_token) | b64encode }}"
+{% for credential in podman_credentials %}
+        "{{ credential['registry_url'] }}": {
+            "auth": "{{ (credential['registry_username'] + ':' + credential['registry_password_or_token']) | b64encode }}"
+{% if loop.index == loop.length %}
         }
+{% else %}
+        },
+{% endif %}
+{% endfor %}
     }
 }
