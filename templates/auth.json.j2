@@ -1,0 +1,7 @@
+{
+    "auths": {
+        "{{ podman_credentials_registry_url }}": {
+            "auth": "{{ (podman_credentials_registry_username + ':' + podman_credentials_registry_password_or_token) | b64encode }}"
+        }
+    }
+}
