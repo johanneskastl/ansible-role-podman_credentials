@@ -1,0 +1,17 @@
+---
+# podman_credentials/tasks/main.yml
+
+- name: 'Create the directories'
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: 'directory'
+    mode: '0700'
+  loop:
+    - '.config/'
+    - '.config/containers/'
+
+- name: 'Create the auth.json file'
+  ansible.builtin.template:
+    src: 'auth.json.j2'
+    dest: '.config/containers/auth.json'
+    mode: '0600'
